@@ -1,6 +1,11 @@
 {
   "name": "quote-app",
   "version": "1.0.0",
+<<<<<<< HEAD
+=======
+  "packageManager": "yarn@3.2.2",
+  "description": "book app directory",
+>>>>>>> f49b7561de12dd182016d79d9243090369456aaf
   "main": "app.js",
   "repository": "https://github.com/happyboi93/quote-app.git",
   "author": "DevIsrael",
@@ -10,12 +15,18 @@
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+<<<<<<< HEAD
     "express-session": "^1.17.3",
     "mongoose": "^6.5.2",
     "nodemon": "^2.0.19",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2"
+=======
+    "nodemon": "^2.0.19",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0"
+>>>>>>> f49b7561de12dd182016d79d9243090369456aaf
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

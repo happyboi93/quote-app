@@ -1,5 +1,5 @@
 .env
 .yarnrc.yml
 yarn.lock
-node_modules
+*node_modules
 yarn-error.log
