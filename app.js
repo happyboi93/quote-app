@@ -3,10 +3,11 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 // const mongoose = require('mongoose');
-const session = require('express-session');
+const cookieSession = require('cookie-session');
 const passport = require('passport');
 const DB_CONNECT = require('./db/connection');
 const router = require('./route/quote-post-route');
+require('./route/passport');
 // setup application
 const app = express();
 
@@ -23,15 +24,20 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 // use express.json
 app.use(express.json())
-// use passport to deal with session
-// app.use(passport.session());
+
+//Configure Session Storage
+app.use(cookieSession({
+  name: 'session-name',
+  keys: ['key1', 'key2']
+}))
+
+//Configure Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // routes
-app.get('/',(req,res)=>{
-  res.send('quotes')
-})
+app.use('/', router);
 
-app.use('/api/quote', router);
 
 // listen for port && connect to database..
 const start= async()=>{
