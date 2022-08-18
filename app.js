@@ -27,11 +27,11 @@ app.use(express.json())
 // app.use(passport.session());
 
 // routes
-app.get('/api/quote',(req,res)=>{
+app.get('/',(req,res)=>{
   res.send('quotes')
 })
 
-app.use('/', router);
+app.use('/api/quote', router);
 
 // listen for port && connect to database..
 const start= async()=>{
