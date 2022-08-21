@@ -4,6 +4,7 @@ const getPosts = ('/', async(req,res)=>{
     try {
         const allQuotes =await quoteModel.find({})
         res.status(200).json(allQuotes)
+ //       res.send(`<br/> <a href='/logout'>Logout</a>`)
     } catch (error) {
         console.log(error)
     }
