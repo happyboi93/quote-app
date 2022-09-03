@@ -9,6 +9,11 @@ const quoteModel = mongoose.Schema({
         type:String,
         required:true
     },
+    
+    title:{
+        type:String,
+        require:false
+    },
     desc:{
         type:String,
         require:false

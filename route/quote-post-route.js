@@ -1,4 +1,4 @@
-const { getPosts, deletePost, createPost, editPost } = require('./post-controller');
+const { getPosts,getSinglePosts, deletePost, createPost, editPost } = require('./post-controller');
 require('./passport')
 const passport = require('passport');
 const isLoggedIn = require('./auth')
@@ -21,16 +21,17 @@ router.get('/protected', isLoggedIn,(req,res)=>{
 router.get('/auth/failure', (req,res)=>{
   res.send('something went wrong!')
 })
-router.get('/logout', (req,res)=>{
+router.get('/logout',isLoggedIn, (req,res)=>{
   req.logout(function(err) {
-    if (err) { return next(err); }
+    if (err) { return next(err) }
     req.session.destroy();
     res.send('Goodbye');
   });
 })
-router.get('/api/quote',isLoggedIn, getPosts);
-router.post('/api/quote', createPost);
-router.put('/api/quote/:id', editPost);
-router.delete('/api/quote/:id', deletePost);
+router.get('/api/quote',getPosts);
+router.get('/api/quote/:id',getSinglePosts);
+router.post('/api/quote',isLoggedIn, createPost);
+router.put('/api/quote/:id',editPost);
+router.delete('/api/quote/:id',isLoggedIn, deletePost);
 
 module.exports = router;

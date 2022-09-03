@@ -3,7 +3,17 @@ const quoteModel = require('../db/quote-schema')
 const getPosts = ('/', async(req,res)=>{
     try {
         const allQuotes =await quoteModel.find({})
-        res.status(200).json(allQuotes)
+        res.status(200).send(allQuotes)
+ //       res.send(`<br/> <a href='/logout'>Logout</a>`)
+    } catch (error) {
+        console.log(error)
+    }
+    
+})
+const getSinglePosts = ('/:id', async(req,res)=>{
+    try {
+        const singleQuote =await quoteModel.findOne({})
+        res.status(200).send(singleQuote)
  //       res.send(`<br/> <a href='/logout'>Logout</a>`)
     } catch (error) {
         console.log(error)
@@ -14,6 +24,7 @@ const createPost = ('/', async(req,res)=>{
     try {
         const newQuote = new quoteModel({
             img: req.body.img,
+            title: req.body.title,
             desc: req.body.desc,
             author: req.body.author
         })
@@ -42,4 +53,4 @@ const deletePost = ('/:id',async(req,res)=>{
         console.log(error)
     }
 })
-module.exports = {getPosts, deletePost,createPost, editPost}
+module.exports = {getPosts,getSinglePosts, deletePost,createPost, editPost}
